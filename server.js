@@ -1,22 +1,22 @@
+
 const express = require('express');
 const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// 🔧 IMPORTANT: CHANGE THESE TO YOUR DETAILS!
+
 const USER_DETAILS = {
-    full_name: "tulsee_agrawal", // ← Change to YOUR name (lowercase, use _ for spaces)
-    birth_date: "11032004", // ← Change to YOUR birth date (ddmmyyyy format)
-    email: "tulseeagrawal1103@gmail.com", // ← Change to YOUR email
-    roll_number: "22BCE0438" // ← Change to YOUR college roll number
+    full_name: "tulsee_agrawal", 
+    birth_date: "11032004", 
+    email: "tulseeagrawal1103@gmail.com", 
+    roll_number: "22BCE0438" 
 };
 
-// Helper functions
+
 function isNumeric(str) {
     return !isNaN(str) && !isNaN(parseFloat(str));
 }
@@ -42,8 +42,6 @@ function createAlternatingCaps(alphabets) {
     }
     return result;
 }
-
-// Main API endpoint - POST /bfhl
 app.post('/bfhl', (req, res) => {
     try {
         const { data } = req.body;
@@ -105,14 +103,14 @@ app.post('/bfhl', (req, res) => {
     }
 });
 
-// GET endpoint for testing
+
 app.get('/bfhl', (req, res) => {
     res.status(200).json({
         operation_code: 1
     });
 });
 
-// Health check
+
 app.get('/', (req, res) => {
     res.status(200).json({
         message: "BFHL API is running!",
@@ -124,6 +122,8 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(` Server is running on port ${PORT}`);
-    console.log(`API endpoint: http://localhost:${PORT}/bfhl`);
+    console.log(`🚀 Server is running on port ${PORT}`);
+    console.log(`📡 API endpoint: http://localhost:${PORT}/bfhl`);
 });
+
+module.exports = app;
